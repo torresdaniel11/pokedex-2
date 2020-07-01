@@ -121,8 +121,16 @@
               "devServerTarget": "pokedex2:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "pokedex2"
+    }
+  },
+  "defaultProject": "pokedex2",
+  "cli": {
+    "analytics": "842952e3-96f3-4e0e-9e0b-fda7f3e036a2"
+  }
 }

@@ -1,0 +1,108 @@
+<article >
+    <div class="container-fluid">
+  
+      <div class="header">
+        <h2>Estas a un paso de entrar al mundo POKEMON!</h2>
+      </div>
+    
+      <div class="form">
+        <h6>Registrate</h6>
+        <form (ngSubmit)="submitRegister()" [formGroup]="registerForm">
+          <div class="form-fields">
+            <input 
+              id="names" 
+              class="form-control" 
+              formControlName="names" 
+              placeholder="Nombres" 
+              autocomplete="username" 
+              type="text"
+              minlength="6"
+              required
+            >
+            <div *ngIf="names.invalid && (names.dirty || names.touched)" class="alert alert-warning">
+              <div *ngIf="names.errors.required">
+                No seas tímido ¿cual es tu nombre?.
+              </div>
+              <span *ngIf="names.errors.minlength">
+                vamos, ¿Cual es tu nombre completo?
+              </span>
+            </div>
+    
+            <input 
+              id="email" 
+              class="form-control" 
+              formControlName="email" 
+              placeholder="Correo electrónico" 
+              autocomplete="username"
+              type="email" 
+              minlength="5"
+              required
+            >
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-warning">
+              <span *ngIf="email.errors.required">
+                Necesitamos tu correo!
+              </span>
+              <span *ngIf="email.errors.email">
+                Debes ingresar un correo válido.
+              </span>
+              <span *ngIf="email.errors.minlength">
+                El correo debe tener mínimo 5 caracteres.
+              </span>
+            </div>
+    
+            <input 
+              id="password" 
+              class="form-control" 
+              formControlName="password" 
+              placeholder="Contraseña" 
+              autocomplete="current-password"
+              type="password" 
+              minlength="8"
+              required
+            >
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-warning">
+              <span *ngIf="password.errors.minlength">
+                La contraseña debe tener mínimo 8 caracteres.
+              </span>
+              <span *ngIf="password.errors.specialcharacter">
+                La contraseña debe tener mínimo {{contstants.PASSWORD.REQUIRED_SPECIAL_CARACTERS}} caracteres
+                especiales.
+              </span>
+              <span *ngIf="password.errors.countNumbers">
+                La contraseña debe tener mínimo {{contstants.PASSWORD.REQUIRED_NUMBERS}} números.
+              </span>
+              <span *ngIf="password.errors.countCapitals">
+                La contraseña debe tener mínimo {{contstants.PASSWORD.REQUIRED_CAPITALS}} mayúsculas.
+              </span>
+            </div>
+    
+            <input 
+              id="confirmPassword" 
+              class="form-control" 
+              formControlName="confirmPassword" 
+              placeholder="Repite la contraseña"
+              autocomplete="repeat-password" 
+              type="password" 
+              minlength="8" 
+              required
+            >
+            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+              class="alert alert-warning">
+              <span *ngIf="confirmPassword.errors.minlength">
+                La contraseña debe tener mínimo 8 caracteres.
+              </span>
+              <span *ngIf="confirmPassword.errors.isMatching">
+                Las contraseñas no coinciden.
+              </span>
+            </div>
+          </div>
+    
+          <div class="form-actions">
+            <button class="btn btn-outline-secondary cancel-button" (click)="cancel()">Cancelar</button>
+            <button class="btn btn-success" (click)="submitRegister()" [disabled]="!registerForm.valid">Registrarme</button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </article>

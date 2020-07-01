@@ -1,0 +1,15 @@
+.infinite-container{
+    height: calc(100vh - 100px); 
+    overflow: scroll;
+    text-align: center;
+  }
+  
+  .filter{
+    margin: 20px 0 15px 0;
+    text-align: center; 
+    
+    input{
+      margin: auto;
+      max-width: 500px;
+    }
+  }

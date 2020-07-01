@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pokedex-22": {
+      "hosting": {
+        "pokedex2": [
+          "pokedex-22"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pokedex-22"
+  }
+}

@@ -1,0 +1,14 @@
+<div class="wrapper container-fluid infinite-container"
+     appInfiniteScroll
+     (bottomReached)="getMorePokemons()">
+    <div class="filter">
+        <input class="form-control"
+               placeholder="Busca aquí tu POKEMON!"
+               type="text"
+               [(ngModel)]='userInput'
+               (ngModelChange)='searchFieldChanged($event)'>
+    </div>
+    <ng-container *ngFor='let pokemon of (pokemons$ | async)?.filteredPokemons '>
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    </ng-container>
+</div>
