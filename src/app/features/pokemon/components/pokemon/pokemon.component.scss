@@ -1,4 +1,8 @@
 .pokemon-detail {
+  margin: 20px;
+  padding-top: 30px;
+  border: 1px solid lightgray;
+
   h3 {
     text-align: center;
   }
@@ -19,4 +23,13 @@
 
 .pokedex-evolutions {
   text-align: center;
+}
+
+.margin-left-30 {
+  margin-left: 30px;
+}
+
+.moves {
+  padding: 30px;
+  padding-bottom: 10px;
 }

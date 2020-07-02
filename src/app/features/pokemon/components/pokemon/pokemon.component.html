@@ -1,14 +1,14 @@
-<div class="container-fluid">
+<div class="container">
   <div class="pokemon-detail">
     <h3>{{pokemonData?.name}}</h3>
     <div class="custom-row">
       <div class="custom-col-6 custom-col-s-12 img-holder">
         <img [src]="pokemonData?.sprites?.front_default">
       </div>
-      <div class="custom-col-6 custom-col-s-12 information">
-        <label>Tipos:</label>
+      <div class="custom-col-6 custom-col-s-12 information align-center">
+        <label>Tipos:&nbsp; </label>
         <ng-container *ngFor="let type of pokemonData?.types">
-          <span class="badge badge-info "> {{type?.type?.name}}</span>
+          <app-pokemon-type [type]="type"></app-pokemon-type>
         </ng-container>
         <hr>
         <label>Peso: </label>
@@ -27,9 +27,9 @@
     </div>
 
     <div class="moves">
-      <h5>Sus 10 movimientos favoritos son:</h5>
+      <h5>Sus movimientos favoritos son:</h5>
       <div class="custom-row">
-        <ng-container *ngFor="let move of pokemonData?.moves | slice:0:10;">
+        <ng-container *ngFor="let move of pokemonData?.moves | slice:0:12;">
           <div class="custom-col-3 custom-col-s-6">
             <li>{{move?.move?.name}}</li>
           </div>

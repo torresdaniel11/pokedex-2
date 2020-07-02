@@ -24,6 +24,7 @@ import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.com
     FormsModule,
     ReactiveFormsModule,
     PokemonCardComponent,
+    PokemonTypeComponent
   ],
 })
 export class SharedModule {}

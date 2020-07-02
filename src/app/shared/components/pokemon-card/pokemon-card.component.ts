@@ -15,8 +15,4 @@ export class PokemonCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  openDetails(): void{
-    this.router.navigate(['pokemon', this.pokemon.id]);
-  }
 }

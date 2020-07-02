@@ -20,6 +20,3 @@ script:
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN;
-
-notifications:
-  slack: triiibo:IeUWGXukkDueVzEo9xTzRAOZ

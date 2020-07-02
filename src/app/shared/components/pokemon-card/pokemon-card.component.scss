@@ -1,3 +1,5 @@
+@import "~assets/styles/variables.scss";
+
 img {
   min-width: 150px;
   min-height: 175px;
@@ -15,6 +17,10 @@ img {
   margin: 10px;
   min-width: 200px;
   border: 1px solid;
+
+  &.isActive {
+    border: 1px solid $primary;
+  }
 }
 
 .pokemon-detail {
