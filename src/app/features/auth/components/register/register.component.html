@@ -4,9 +4,13 @@
       <div class="header">
         <h2>Estas a un paso de entrar al mundo POKEMON!</h2>
       </div>
+
+      <div class="align-center">
+        <img src="assets/images/register.svg" height="200px">
+      </div>
     
       <div class="form">
-        <h6>Registrate</h6>
+        <h5 class="align-center">Registrate</h5>
         <form (ngSubmit)="submitRegister()" [formGroup]="registerForm">
           <div class="form-fields">
             <input 
@@ -99,7 +103,7 @@
     
           <div class="form-actions">
             <button class="btn btn-outline-secondary cancel-button" (click)="cancel()">Cancelar</button>
-            <button class="btn btn-success" (click)="submitRegister()" [disabled]="!registerForm.valid">Registrarme</button>
+            <button class="btn app-btn-primary" (click)="submitRegister()" [disabled]="!registerForm.valid">Registrarme</button>
           </div>
         </form>
         

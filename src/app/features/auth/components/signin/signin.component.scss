@@ -1,3 +1,5 @@
+@import "~assets/styles/variables.scss";
+
 .header {
   text-align: center;
   margin: 15px 0;
@@ -10,7 +12,7 @@
 .form {
   margin: auto;
   margin-top: 30px;
-  max-width: 600px;
+  max-width: 500px;
   border: 1px solid lightgrey;
   padding: 13px;
   border-radius: 5px;
@@ -27,10 +29,28 @@ input {
 }
 
 .form-actions {
-  text-align: right;
+  button.btn {
+    background-color: $primary;
+    color: $white;
+  }
 }
 
 .not-registered {
   text-align: center;
   margin-top: 20px;
+
+  a {
+    color: $primary;
+  }
+
+  * {
+    display: inline;
+  }
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

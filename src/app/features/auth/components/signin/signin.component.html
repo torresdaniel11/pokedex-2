@@ -2,11 +2,14 @@
 
   <div class="container-fluid">
     <div class="header">
-      <h2>¡Bienvenido!</h2>
+      <h2>¡Bienvenido a Pokedex!</h2>
+    </div>
+    <div class="align-center">
+      <img src="assets/images/welcome.svg" height="200px">
     </div>
 
     <div class="form">
-      <h6>Ingresa con tu usuario</h6>
+      <h5 class="align-center">Ingresa con tu usuario</h5>
       <form (ngSubmit)="signinEmail()"
             [formGroup]="authForm">
         <div class="fields">
@@ -48,8 +51,8 @@
 
         </div>
 
-        <div class="form-actions">
-          <button class="btn btn-success"
+        <div class="form-actions align-center">
+          <button class="btn app-btn-primary"
                   (click)="signinEmail()"
                   type="button"
                   [disabled]="!authForm.valid">Ingresar</button>
@@ -58,8 +61,8 @@
     </div>
 
     <div class="not-registered">
-      <h6>Aún no estás registrado?</h6>
-      <a [routerLink]="['/auth/register']">Registrate</a>
+      <h6>Aún no estás registrado? </h6>
+      <a [routerLink]="['/auth/register']"> Registrate</a>
     </div>
   </div>
 </section>

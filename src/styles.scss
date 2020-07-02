@@ -1,2 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "assets/styles/variables.scss";
+
+.align-center {
+  text-align: center;
+}
+
+.form-control {
+  border: 0;
+  border-bottom: 1px solid grey;
+  border-radius: 0;
+}
+
+.app-btn-primary {
+    background-color: $primary;
+    color: $white;
+  }
+  
