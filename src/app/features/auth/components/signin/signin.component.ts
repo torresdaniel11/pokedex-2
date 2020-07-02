@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '@services/auth.service';
-
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -39,10 +39,13 @@ export class SigninComponent implements OnInit {
       .then((ok) => {
         this.router.navigate(['app', 'pokedex']);
       })
-      .catch((err) => {
-        // TODO hangle error with love
-        console.log(err);
-        alert(err);
+      .catch((error) => {
+        swal.fire({
+          title: 'Oh, lo sentimos',
+          text: error.message,
+          icon: 'error',
+          showConfirmButton: true
+        });
       });
   }
 

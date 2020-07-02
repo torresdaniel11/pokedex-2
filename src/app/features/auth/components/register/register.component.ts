@@ -5,9 +5,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { countCapitalsValidator } from '@validators/count-capitals.validator';
 import { countNumbersValidator } from '@validators/count-numbers.validator';
+import { LocalstorageService } from '@services/localstorage.service';
 import { matchValuesValidator } from '@validators/match-values.validatios';
 import { REGISTER_CONSTANTS } from '../../auth.constants';
 import { specialCharactersValidator } from '@validators/special-caracter.validator';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +23,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private storage: LocalstorageService
   ) {
     this.contstants = REGISTER_CONSTANTS;
   }
@@ -30,22 +33,48 @@ export class RegisterComponent implements OnInit {
     this.createForm();
   }
 
+  /**
+   * navigate back to user sign in
+   *
+   */
   cancel() {
-    this.router.navigate(['']);
+    this.router.navigate(['auth']);
   }
 
+  /**
+   * submit action for register user
+   *
+   */
   submitRegister() {
     const values = this.registerForm.value;
-    this.auth.saveLocalData(values);
+
+
+    this.storeInfo(values);
     this.auth.emailCreateUser(values.email, values.password).then(ok => {
       this.router.navigate(['app', 'pokedex']);
     }).catch(error => {
-      // TODO handle error with love
-      console.log(error);
-      this.cancel();
+      swal.fire({
+        title: 'Oh, lo sentimos',
+        text: error.message,
+        icon: 'error',
+        showConfirmButton: true
+      });
     });
   }
 
+  /**
+   * store user info in local storage
+   *
+   * @param {*} userInfo
+   */
+  storeInfo(userInfo): void {
+    this.storage.storeUser(JSON.stringify(userInfo));
+  }
+
+  /**
+   * create register form
+   *
+   */
   createForm() {
     this.registerForm = this.fb.group(
       {
@@ -82,6 +111,12 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  /**
+   * confirm if passwords coincide
+   *
+   * @param {FormGroup} group
+   * @returns
+   */
   checkPasswords(group: FormGroup) {
     const pass = group.get('password').value;
     const confirmPass = group.get('confirmPassword').value;

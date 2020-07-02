@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators';
 
 import { AuthService } from '@services/auth.service';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -33,7 +34,12 @@ export class IsAuthenticatedGuard implements CanActivate {
       map((authState) => !!authState),
       tap((authenticated) => {
         if (!authenticated) {
-          console.log('User is not authenticated');
+          swal.fire({
+            title: 'Oh, lo sentimos',
+            text: 'Debes autenticarte antes de entrar',
+            icon: 'error',
+            showConfirmButton: true
+          });
           this.router.navigate(['auth']);
         }
       })

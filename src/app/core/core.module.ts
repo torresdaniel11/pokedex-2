@@ -6,13 +6,18 @@ import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AuthService } from '@services/auth.service';
 import { environment } from '@environments/environment';
+import { LocalstorageService } from '@services/localstorage.service';
 import { pokedexReducer } from './reducers/pokedex.reducer';
 import { PokemonsService } from './services/pokemons.service';
 
 @NgModule({
   declarations: [],
-  providers: [PokemonsService],
+  providers: [
+    PokemonsService,
+    AuthService,
+    LocalstorageService],
   imports: [
     CommonModule,
     HttpClientModule,

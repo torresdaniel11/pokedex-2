@@ -1,0 +1,35 @@
+.header {
+  text-align: center;
+  margin: 15px 0;
+
+  h2 {
+    color: #444;
+  }
+}
+
+.alert.alert-warning {
+  span {
+    display: block;
+  }
+}
+
+.form {
+  margin: auto;
+  margin-top: 30px;
+  max-width: 600px;
+  border: 1px solid lightgrey;
+  padding: 13px;
+  border-radius: 5px;
+}
+
+input {
+  margin: 15px 0;
+}
+
+.form-actions {
+  text-align: right;
+
+  .cancel-button {
+    margin-right: 15px;
+  }
+}

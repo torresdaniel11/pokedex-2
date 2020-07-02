@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@interfaces/appState';
 import { Pokemon } from '@interfaces/pokemon';
 import { PokemonsService } from '@services/pokemons.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pokedex',
@@ -70,7 +71,20 @@ export class PokedexComponent implements OnInit, OnDestroy {
    *
    */
   getPokemonBatch(): void {
+    this.showToast();
     this.pokeService.requestBatch();
+  }
+
+  showToast(): void {
+    swal.fire({
+      icon: 'success',
+      title: 'Cargando',
+      text: 'En cualquier momento apareceran mas pokemons!',
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+    });
   }
 
   /**

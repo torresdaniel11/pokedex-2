@@ -11,7 +11,6 @@ export class AuthService {
   displayName: string;
   email: string;
   photoURL: string;
-  localData: any;
 
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
@@ -42,9 +41,5 @@ export class AuthService {
 
   signOut(): Promise<void> {
     return this.afAuth.signOut();
-  }
-
-  saveLocalData(userData) {
-    this.localData = userData;
   }
 }
