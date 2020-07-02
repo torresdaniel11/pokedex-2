@@ -77,7 +77,7 @@ export class PokedexComponent implements OnInit, OnDestroy {
 
   showToast(): void {
     swal.fire({
-      icon: 'success',
+      icon: 'info',
       title: 'Cargando',
       text: 'En cualquier momento apareceran mas pokemons!',
       toast: true,
