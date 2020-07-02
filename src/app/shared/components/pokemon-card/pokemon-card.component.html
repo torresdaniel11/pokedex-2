@@ -1,11 +1,13 @@
-<button class="button-card" (click)="openDetails()">
+<button class="btn button-card" (click)="openDetails()">
     <div class="pokemon-detail">
       <div class="pokemon">
         <span>{{pokemon.name | titlecase}}</span>
         <img [src]="pokemon?.sprites?.front_default || ''">
-        <ng-container *ngFor="let type of pokemon?.types | slice:0:6;">
-          <span class="">{{type.type?.name}}</span>
-        </ng-container>
+        <div class="types">
+          <ng-container *ngFor="let type of pokemon?.types | slice:0:6;">
+            <app-pokemon-type [type]="type"></app-pokemon-type>
+          </ng-container>
+        </div>
       </div>
     </div>
   </button>

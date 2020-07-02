@@ -2,10 +2,10 @@
   <div class="header">
     <nav class="navbar navbar-light bg-light">
       <a [routerLink]="['/pokedex']"
-         class="align-left">Pokedex</a>
-      <div class="align-right">
-        <button class="btn btn-outline-info" [routerLink]="['/profile']">Mi perfil</button>
-        <button class="btn btn-outline-success"
+         class="align-left color-primary">Pokedex <i class="fa fa-paw"></i></a>
+      <div class="align-right actions">
+        <button class="btn app-btn-outline-primary profile" [routerLink]="['/profile']">Mi perfil <i class="fa fa-user"></i></button>
+        <button class="btn app-btn-outline-black"
                 (click)="signOut()">Salir <i class="fa fa-sign-out"></i></button>
       </div>
     </nav>
@@ -19,7 +19,7 @@
     <div class="footer-wrapper">
       <div class="content text-center">
         <a href="https://www.linkedin.com/in/datola/"
-           target="_blank">Daniel Torres L.</a>
+           target="_blank">Daniel Torres L.  <i class="fa fa-linkedin"></i></a>
       </div>
     </div>
   </footer>

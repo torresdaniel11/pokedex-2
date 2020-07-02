@@ -14,7 +14,30 @@
 }
 
 .app-btn-primary {
+  background-color: $primary;
+  color: $white;
+}
+
+.app-btn-primary {
+  background-color: $primary;
+  color: $white;
+}
+
+.app-btn-outline-primary {
+  background-color: $white;
+  color: $primary;
+  border-color: $primary;
+
+  &:hover {
     background-color: $primary;
     color: $white;
+    border-color: $white;
   }
-  
+}
+
+
+.app-btn-outline-black {
+  background-color: $white;
+  color: $black;
+  border-color: $black;
+}

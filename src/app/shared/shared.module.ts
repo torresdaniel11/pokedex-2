@@ -5,11 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { InfiniteScrollDirective } from './directives/infinite-scroll.directive';
 import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { PokemonTypeComponent } from './components/pokemon-type/pokemon-type.component';
 
 @NgModule({
   declarations: [
     InfiniteScrollDirective,
-    PokemonCardComponent
+    PokemonCardComponent,
+    PokemonTypeComponent
   ],
   imports: [
     CommonModule,
