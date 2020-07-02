@@ -1,14 +1,13 @@
-
-import { Store } from '@ngrx/store';
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-
+import { Injectable } from '@angular/core';
 import { map, switchMap } from 'rxjs/operators';
-import { AppState } from '../interfaces/appState';
+import { Observable, forkJoin } from 'rxjs';
+import { Store } from '@ngrx/store';
 
-import * as pokemonActions from '../actions/pokedex.action';
+import { AppState } from '@interfaces/appState';
+import { NamedAPIResource } from '@interfaces/named-apiresource';
 import { POKEAPI_CONSTANTS } from './pokemons.constants';
+import * as pokemonActions from '@actions/pokedex.action';
 
 // export { POKEAPI_CONSTANTS };
 
@@ -18,10 +17,7 @@ import { POKEAPI_CONSTANTS } from './pokemons.constants';
 export class PokemonsService {
   offset: number;
 
-  constructor(
-    private store: Store<AppState>,
-    private http: HttpClient
-  ) {
+  constructor(private store: Store<AppState>, private http: HttpClient) {
     this.offset = -POKEAPI_CONSTANTS.BATCH_SIZE;
   }
 
@@ -30,19 +26,19 @@ export class PokemonsService {
    * request the first batch
    *
    */
-  initializePokemonList() {
+  initializePokemonList(): void {
     if (this.offset < 0) {
       this.firstBatch();
     }
   }
 
-  firstBatch() {
+  firstBatch(): void {
     this.getPokemons().subscribe((pokemons) => {
       this.store.dispatch(new pokemonActions.LoadPokemons(pokemons));
     });
   }
 
-  setSearch(searchCriteria: string) {
+  setSearch(searchCriteria: string): void {
     this.store.dispatch(new pokemonActions.FilterPokemons(searchCriteria));
   }
 
@@ -50,7 +46,7 @@ export class PokemonsService {
    * request a new pokemon batch and add them to the store
    *
    */
-  requestBatch() {
+  requestBatch(): void {
     this.getPokemons().subscribe((pokemons) => {
       this.store.dispatch(new pokemonActions.AddPokemons(pokemons));
     });
@@ -69,12 +65,30 @@ export class PokemonsService {
 
     return this.http.get(url).pipe(
       map((result: any) => {
-        return result.results.map((res) => this.getPokemonDetail(res.url));
+        return this.getPetitionGroup(result.results);
       }),
-      switchMap((tasks) => {
+      switchMap((tasks: Observable<any>[]) => {
         return forkJoin(tasks);
       })
     );
+  }
+
+  /**
+   * receive an array of namesAPIResource and return the petition observables
+   *
+   * @param {NamedAPIResource[]} apiResources
+   * @returns {Observable<any>[]}
+   */
+  getPetitionGroup(apiResources: NamedAPIResource[]): Observable<any>[] {
+    return apiResources.map((res: NamedAPIResource) =>
+      this.getPokemonDetail(res.url)
+    );
+  }
+
+  getEvolutionPokemons(apiResources: NamedAPIResource[]): Observable<any> {
+    const reqs = this.getPetitionGroup(apiResources);
+
+    return forkJoin(reqs);
   }
 
   /*
@@ -100,7 +114,7 @@ export class PokemonsService {
 
     url = url.replace('{{SIZE}}', sLimit);
     url = url.replace('{{OFFSET}}', sOffset);
-    console.log(url);
+
     return url;
   }
 
@@ -110,8 +124,21 @@ export class PokemonsService {
    * @param {number} [amount=POKEAPI_CONSTANTS.BATCH_SIZE]
    * @returns
    */
-  increaseOffset(amount: number = POKEAPI_CONSTANTS.BATCH_SIZE) {
+  increaseOffset(amount: number = POKEAPI_CONSTANTS.BATCH_SIZE): number {
     this.offset += amount;
     return this.offset;
+  }
+
+  getPokemonById(id: number): Observable<any> {
+    const url = `${POKEAPI_CONSTANTS.POKEMON_DETAIL_API}${id}`;
+    return this.http.get(url);
+  }
+
+  getSpecieData(specieURL: string): Observable<any> {
+    return this.http.get(specieURL);
+  }
+
+  getEvolutionChainData(evolutionChainURL: string): Observable<any> {
+    return this.http.get(evolutionChainURL);
   }
 }

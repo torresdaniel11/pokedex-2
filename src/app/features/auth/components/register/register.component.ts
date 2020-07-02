@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AuthService } from '@services/auth.service';
+import { countCapitalsValidator } from '@validators/count-capitals.validator';
+import { countNumbersValidator } from '@validators/count-numbers.validator';
+import { matchValuesValidator } from '@validators/match-values.validatios';
 import { REGISTER_CONSTANTS } from '../../auth.constants';
-import { specialCharactersValidator } from 'src/app/core/validators/special-caracter.validator';
-import { countCapitalsValidator } from 'src/app/core/validators/count-capitals.validator';
-import { countNumbersValidator } from 'src/app/core/validators/count-numbers.validator';
-import { matchValuesValidator } from 'src/app/core/validators/match-values.validatios';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { specialCharactersValidator } from '@validators/special-caracter.validator';
 
 @Component({
   selector: 'app-register',

@@ -1,4 +1,4 @@
-<button class="button-card" [routerLink]="['app', 'detalle-pokemon', pokemon.id]">
+<button class="button-card" (click)="openDetails()">
     <div class="pokemon-detail">
       <div class="pokemon">
         <span>{{pokemon.name | titlecase}}</span>

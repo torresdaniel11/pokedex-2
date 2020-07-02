@@ -1,3 +1,4 @@
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import {
   Directive,
   HostListener,
@@ -6,7 +7,6 @@ import {
   Input,
 } from '@angular/core';
 import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Directive({
   selector: '[appInfiniteScroll]',
@@ -41,10 +41,7 @@ export class InfiniteScrollDirective {
   scrollReachedBottom(maxPosition: number) {
     if (this.debounceSubject.observers.length === 0) {
       this.debounceSubject
-        .pipe(
-          debounceTime(this.infiniteScrollDebounce),
-          distinctUntilChanged()
-        )
+        .pipe(debounceTime(this.infiniteScrollDebounce), distinctUntilChanged())
         .subscribe(() => {
           this.bottomReached.emit(true);
         });

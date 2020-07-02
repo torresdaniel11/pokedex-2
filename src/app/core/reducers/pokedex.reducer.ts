@@ -1,9 +1,8 @@
-import { Type } from './../interfaces/pokemon';
-import { AppState } from './../interfaces/appState';
-import { ACTIONS } from '../enums/actions.enum';
-
-import * as pokemonActions from '../actions/pokedex.action';
-import { Pokemon } from '../interfaces/pokemon';
+import { ACTIONS } from '@enums/actions.enum';
+import { AppState } from '@interfaces/appState';
+import { Pokemon } from '@interfaces/pokemon';
+import { PokemonType } from '@interfaces/pokemon-type';
+import * as pokemonActions from '@actions/pokedex.action';
 
 export const initialState = {
   pokemons: [],
@@ -38,7 +37,7 @@ export function pokedexReducer(
           return true;
         }
 
-        return pokemon.types.some((type: Type) => type.type.name.match(re));
+        return pokemon.types.some((type: PokemonType) => type.type.name.match(re));
       });
 
       return {

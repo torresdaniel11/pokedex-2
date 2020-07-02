@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
-import { ACTIONS } from '../enums/actions.enum';
-import { Pokemon } from '../interfaces/pokemon';
+
+import { ACTIONS } from '@enums/actions.enum';
+import { Pokemon } from '@interfaces/pokemon';
 
 export class AddPokemons implements Action {
   readonly type = ACTIONS.POKEDEX_BATCH;
@@ -19,6 +20,5 @@ export class FilterPokemons implements Action {
 
   constructor(public payload: string) {}
 }
-
 
 export type AddPokemonBatch = AddPokemons | LoadPokemons | FilterPokemons;

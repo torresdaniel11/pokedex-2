@@ -3,9 +3,9 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { AppState } from 'src/app/core/interfaces/appState';
-import { Pokemon } from 'src/app/core/interfaces/pokemon';
-import { PokemonsService } from 'src/app/core/services/pokemons.service';
+import { AppState } from '@interfaces/appState';
+import { Pokemon } from '@interfaces/pokemon';
+import { PokemonsService } from '@services/pokemons.service';
 
 @Component({
   selector: 'app-pokedex',

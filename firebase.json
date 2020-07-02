@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/pokedex2",
     "ignore": [
       "firebase.json",
       "**/.*",

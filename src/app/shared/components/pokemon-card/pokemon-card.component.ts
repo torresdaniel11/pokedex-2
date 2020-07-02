@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Pokemon } from 'src/app/core/interfaces/pokemon';
+import { Router } from '@angular/router';
+
+import { Pokemon } from '@interfaces/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -9,9 +11,12 @@ import { Pokemon } from 'src/app/core/interfaces/pokemon';
 export class PokemonCardComponent implements OnInit {
   @Input() pokemon: Pokemon;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  openDetails(): void{
+    this.router.navigate(['pokemon', this.pokemon.id]);
+  }
 }

@@ -1,1 +1,41 @@
-<p>pokemon works!</p>
+<div class="container-fluid">
+  <div class="pokemon-detail">
+    <h3>{{pokemonData?.name}}</h3>
+    <div class="custom-row">
+      <div class="custom-col-6 custom-col-s-12 img-holder">
+        <img [src]="pokemonData?.sprites?.front_default">
+      </div>
+      <div class="custom-col-6 custom-col-s-12 information">
+        <label>Tipos:</label>
+        <ng-container *ngFor="let type of pokemonData?.types">
+          <span class="badge badge-info "> {{type?.type?.name}}</span>
+        </ng-container>
+        <hr>
+        <label>Peso: </label>
+        <span> {{pokemonData?.weight}}</span>
+        <hr>
+        <label>Altura: </label>
+        <span> {{pokemonData?.height}}</span>
+      </div>
+    </div>
+
+    <div class="pokedex-evolutions">
+      <h5>Cadena de evolución: </h5>
+      <ng-container *ngFor="let pokemon of evolutionPokemons">
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      </ng-container>
+    </div>
+
+    <div class="moves">
+      <h5>Sus 10 movimientos favoritos son:</h5>
+      <div class="custom-row">
+        <ng-container *ngFor="let move of pokemonData?.moves | slice:0:10;">
+          <div class="custom-col-3 custom-col-s-6">
+            <li>{{move?.move?.name}}</li>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
+  </div>
+</div>

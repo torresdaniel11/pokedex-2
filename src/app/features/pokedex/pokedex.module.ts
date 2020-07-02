@@ -1,14 +1,12 @@
-import { SharedModule } from './../../shared/shared.module';
-import { PokedexRoutingModule } from './pokedex-routing.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
 import { PokedexComponent } from './components/pokedex/pokedex.component';
-import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
-
-
+import { PokedexRoutingModule } from './pokedex-routing.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
-  declarations: [PokedexComponent, PokemonCardComponent],
+  declarations: [PokedexComponent],
   imports: [
     CommonModule,
     SharedModule,

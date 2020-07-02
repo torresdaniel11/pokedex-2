@@ -1,1 +1,65 @@
-<p>signin works!</p>
+<section>
+
+  <div class="container-fluid">
+    <div class="header">
+      <h2>¡Bienvenido!</h2>
+    </div>
+
+    <div class="form">
+      <h6>Ingresa con tu usuario</h6>
+      <form (ngSubmit)="signinEmail()"
+            [formGroup]="authForm">
+        <div class="fields">
+          <input class="form-control"
+                 formControlName="email"
+                 placeholder="Correo electrónico"
+                 autocomplete="username"
+                 type="text"
+                 minlength="5"
+                 required>
+
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-warning">
+            <span *ngIf="email.errors.required">
+              Necesitamos tu correo!
+            </span>
+            <span *ngIf="email.errors.email">
+              El correo que ingresaste no es válido.
+            </span>
+            <span *ngIf="email.errors.minlength">
+              El correo debe tener mínimo 5 caracteres.
+            </span>
+          </div>
+
+          <input class="form-control"
+                 formControlName="password"
+                 placeholder="Contraseña"
+                 autocomplete="current-password"
+                 type="password"
+                 minlength="8"
+                 required>
+
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+               class="alert alert-warning">
+            <span *ngIf="password.errors.minlength">
+              La contraseña debe tener mínimo 8 caracteres.
+            </span>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-success"
+                  (click)="signinEmail()"
+                  type="button"
+                  [disabled]="!authForm.valid">Ingresar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="not-registered">
+      <h6>Aún no estás registrado?</h6>
+      <a [routerLink]="['/registro']">Registrate</a>
+    </div>
+  </div>
+</section>

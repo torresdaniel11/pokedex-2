@@ -1,5 +1,5 @@
-import { NamedAPIResource } from './named-apiresource';
-
+import { NamedAPIResource } from '@interfaces/named-apiresource';
+import { PokemonType } from '@interfaces/pokemon-type';
 
 export interface Pokemon {
   id: number;
@@ -23,11 +23,5 @@ export interface Pokemon {
     back_default: string;
   };
   stats: NamedAPIResource [];
-  types: Type [];
+  types: PokemonType [];
 }
-
-export interface Type {
-  slot: number;
-  type: NamedAPIResource;
-}
-
